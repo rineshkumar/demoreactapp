@@ -7,11 +7,14 @@ export default class PersonList extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:32775/weatherforecast`)
+    axios.get(`http://localhost:32771/weatherforecast`)
       .then(res => {
         
         const persons = res.data;
         this.setState({ persons });
+      }).catch(error =>{
+        debugger
+        this.setState([{temperatureC : 0 , summary : 'error'}])
       })
   }
 
